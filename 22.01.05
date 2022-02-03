@@ -1,0 +1,183 @@
+# 1번
+
+ticker = "btc_krw"
+
+print(ticker.upper())
+
+​
+
+# 2번
+
+ticker = "BTC_KRW"
+
+print(ticker.lower())
+
+​
+
+# 3번
+
+a = "hello world"
+
+print(a.split(" "))
+
+​
+
+# 4번
+
+ticker = "btc_krw"
+
+print(ticker.split("_"))
+
+​
+
+# 5번
+
+data = "2020-12-30"
+
+print(data.split("-"))
+
+​
+
+# 6번
+
+data = "039490 "
+
+print(data.rstrip())
+
+​
+
+# 7번
+
+name1 = "김민수"
+
+age1 = 10
+
+name2 = "이철희"
+
+age2 = 13
+
+​
+
+print('이름: %s 나이: %d' % (name1, age1))
+
+print('이름: %s 나이: %d' % (name2, age2))
+
+​
+
+# 8번
+
+print('이름: {} 나이: {}'.format("김민수", 10))
+
+print('이름: {} 나이: {}'.format("이철희", 13))
+
+​
+
+# 9번
+
+price = "5,969,782,550"
+
+​
+
+print(int(price.replace(',', '')))
+
+​
+
+# 10번
+
+분기 = "2020/12(E) (IFRS연결)"
+
+print(분기[0:7])
+
+​
+
+# 11번
+
+string = 'abcdfe2a354a32a'
+
+print(string.replace('a', 'A'))
+
+​
+
+# 12번
+
+pin = "881120-1068234"
+
+print(pin[7])
+
+​
+
+# 13번
+
+a = "a:b:c:d"
+
+print(a.replace(":", "#"))
+
+​
+
+# 14번
+
+s = "Life, is, too, short"
+
+ss = s.split(",")
+
+print(ss)
+
+print("".join(ss))
+
+​
+
+# 15번
+
+letters = 'python'
+
+print(letters[1])
+
+print(letters[3])
+
+​
+
+# 16번
+
+cn = "24가 2210"
+
+print(cn[4:])
+
+​
+
+# 17번
+
+s = "파이썬파이썬파이썬"
+
+print(s[0])
+
+​
+
+# 18번
+
+num_str = int("720")
+
+print(num_str)
+
+print(type(num_str))
+
+​
+
+# 19번
+
+data = float("15.79")
+
+print(data)
+
+print(type(data))
+
+​
+
+# 20번
+
+month = 48584
+
+date = 36
+
+총금액 = month * date
+
+print(총금액)
