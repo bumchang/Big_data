@@ -1,0 +1,34 @@
+# 1번
+let =  "ADCBBBBCABBCBDACBDCAACDDDCAABABDBCBCBDBDBDDABBAAAAAAADADBDBCBDABADCADC"
+
+print(sum(list(map(lambda x : 4 if x == "A" else 3 if x == "B" else 2 if x == "C" else 1, let))))
+
+# 2번
+lit = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(list(map(lambda x : x ** 2, lit)))
+
+# 3번
+def kakao(S):
+    dict = {}
+    for (x, y) in zip(S[:-1], S[1:]):
+        if not dict.get(y-x):
+            dict[y-x] = [(x,y)]
+        else:
+            dict[y-x] = dict[y-x] + [(x,y)]
+
+    return dict[min(dict.keys())]
+
+S = [1, 3, 4, 8, 13, 17, 20]
+
+print(kakao(S))
+
+# 4번
+
+import pandas as pd
+names = pd.read_csv("name/sample.txt", names = ['num'])
+#print(names)
+a = str(names.sum()[0])
+b = str(names.mean()[0])
+with open("result.txt", "w") as f:
+     f.write(a)
+     f.write(b)
