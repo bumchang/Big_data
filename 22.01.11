@@ -1,0 +1,129 @@
+# 1번
+def is_odd(*args) :
+    for i in args :
+        if i % 2 == 0 :
+            print("짝수")
+        else :
+            print("홀수")
+is_odd(21, 312,412, 32, 2)
+
+# 2번
+def print_coin(x) :
+    print(x)
+
+# 3번
+print_coin("비트코인")
+
+# 4번
+print_coin("비트코인" * 100)
+
+# 5번
+def print_coins(x) :
+    print(x * 100)
+print_coins("비트코인")
+
+# 6번
+def print_with_smile(x) :
+    print(x, ":D")
+print_with_smile("hello")
+
+# 7번
+def print_upper_price(x) :
+    print(x * 0.3)
+
+# 8번
+def print_even(a):
+    print(list(filter(lambda x:x%2==0, a)))
+print_even([10, 5, 2])
+
+# 9번
+def  print_mxn(x):
+    x = "hello 3 => hellohellohello"
+    print(x)
+print_mxn("string")
+
+# 10번
+def calc_monthly_salary(annual_salary) :
+    print(annual_salary/12)
+calc_monthly_salary(12000000)
+
+# 11번
+def make_url(x) :
+    print("www.",x,".com")
+make_url("naver")
+
+# 12번
+def make_list(x) :
+    print(list(x))
+make_list("abcd")
+
+# 13번
+a = input("문자입력:")
+print(a, "는 소문자입니다.")
+b = input("문자입력:")
+print(b, "는 대문자입니다.")
+
+# 14번
+a = list(range(1, 201))
+print(list(filter(lambda x: x % 7 == 0 and x % 5 != 0, a)))
+
+# 15번
+result = [88, 30, 61, 55, 95]
+print(list(map(lambda x: "합격" if x >= 60 else "불합격", result)))
+
+# 16번
+blood=['A', 'A', 'A', 'O', 'B', 'B', 'O', 'AB', 'AB', 'O']
+a_count=0
+b_count=0
+ab_count=0
+o_count=0
+for i in blood:
+    if i=='A':
+        a_count+=1
+    elif i=='B':
+        b_count+=1
+    elif i=='AB':
+        ab_count+=1
+    else:
+        o_count+=1
+print("A형 학생수 : %d명"%(a_count))
+print("B형 학생수 : %d명"%(b_count))
+print("AB형 학생수 : %d명"%(ab_count))
+print("O형 학생수 : %d명"%(o_count))
+# 17번
+score = [85, 65, 77, 83, 75, 22, 98, 88, 38, 100]
+i=0
+while i<len(score):
+    if score[i]<80:
+        score.pop(i)
+    else:
+        i+=1
+print(score)
+print(sum(score))
+# 18번
+lis = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+lis_one = list(filter(lambda x : x % 2 == 0, lis))
+print(list(map(lambda x : x ** 2, lis_one)))
+
+# 19번
+num = int(input("정수를 입력하면 약수를 구해줍니다 :"))
+index = 1
+count = 0
+while index <= num :
+    if num % index == 0:
+        print(index)
+        count += 1
+    index += 1
+print(f"{num}의 약수 : {count}개.")
+
+# 20번
+a = int(input("첫 번째 정수를 입력하세요:"))
+b = int(input("두 번째 정수를 입력하세요:"))
+for i in range(a+1, 1, -1):
+    if a%i ==0 and b%i ==0:
+        print("최대공약수:", i)
+        break
+for i in range(b,(a*b)+1):
+    if i%a ==0 and i%b == 0:
+        print("최소공배수:", i)
+        break
