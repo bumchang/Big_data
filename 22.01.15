@@ -1,0 +1,23 @@
+# 1번
+
+text = "As the country became embroiled in a domestic crisis, the first government was dislodged and succeeded by several different administrations. Bolikango served as Deputy Prime Minister in one of the new governments before a partial state of stability was reestablished in 1961. He mediated between warring factions in the Congo and briefly served once again as Deputy Prime Minister in 1962 before returning to the parliamentary opposition. After Joseph-Desire Mobutu took power in 1965, Bolikango became a minister in his government. Mobutu soon dismissed him but appointed him to the political bureau of the Mouvement Populaire de la Revolution. Bolikango left the bureau in 1970. He left Parliament in 1975 and died seven years later. His grandson created the Jean Bolikango Foundation in his memory to promote social progress. The President of the Congo posthumously awarded Bolikango a medal in 2005 for his long career in public service."
+text = text.split(" ")
+
+wordCount = {}
+
+for word in text:
+    wordCount[word] = wordCount.get(word, 0) + 1
+
+    keys = sorted(wordCount.keys())
+
+for word in keys:
+    print(word + ':' + str(wordCount[word]))
+
+# 2번
+
+dic={'':' ','.-':'A','-...':'B','-.-.':'C','-..':'D','.':'E','..-.':'F','--.':'G','....':'H','..':'I','.---':'J','-.-':'K','.-..':'L','--':'M','-.':'N','---':'O','.--.':'P','--.-':'Q','.-.':'R','...':'S','-':'T','..-':'U','...-':'V','.--':'W','-..-':'X','-.--':'Y','--..':'Z'}
+morse=".... .  ... .-.. . . .--. ...  . .- .-. .-.. -.--"
+word=morse.split(" ")
+for i in word:
+    print(dic[i],end="")
+print()
