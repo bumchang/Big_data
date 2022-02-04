@@ -1,0 +1,66 @@
+from bs4 import BeautifulSoup
+import requests
+import openpyxl
+import pandas as pd
+import re
+
+print("=" * 50) 
+
+# 특정단어 검색 후 뉴스 내용 크롤링 
+
+kwd='박지후'
+news_num=10
+
+Jihoo_url="https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query="+kwd
+req=requests.get(Jihoo_url)
+
+soup=BeautifulSoup(req.content, 'html.parser')
+news=list(soup.find_all("a",{'class':'news_tit'}))
+news=news[:10]
+
+link=[]
+title=[]
+for i in news:
+    link.append(i.attrs['href'])
+    title.append(i.attrs['title'])
+
+news_dict={}
+for i in range(len(news)):
+    news_dict[i]={'title':title[i], 'url':link[i]}
+
+df=pd.DataFrame(news_dict).T
+df.to_excel('Jihoo.xlsx')
+
+print("="*50) 
+
+# 지식인에서 특정 단어 검색해서 나오는 내용 크롤링 
+
+news_num=10
+
+trend_url="https://search.naver.com/search.naver?where=kin&sm=tab_jum&query=%EC%B5%9C%EA%B7%BC%20%ED%8A%B8%EB%A0%8C%EB%93%9C"
+req=requests.get(trend_url)
+soup=BeautifulSoup(req.content, 'html.parser')
+
+jsin=list(soup.find_all("a",{'class':'api_txt_lines question_text'}))
+
+idx=0
+while idx < news_num:
+    for i in jsin[:news_num]:
+        print(str(idx)+'-----------------------')
+        print(i.get_text())
+        idx+=1
+        
+print("="*50) 
+
+# 벅스에서 차트 순위 뽑아오기
+
+Bugs_url="https://music.bugs.co.kr/chart"
+req=requests.get(Bugs_url)
+soup=BeautifulSoup(req.content, 'html.parser')
+
+music=soup.select("p.title")
+singer=soup.select("p.artist")
+
+for i in range(50):
+    print(str(int(i+1))+"순위: "+music[i].text.strip(),singer[i].text.strip())
+    
