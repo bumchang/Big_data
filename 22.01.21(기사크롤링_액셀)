@@ -1,0 +1,28 @@
+from bs4 import BeautifulSoup
+import requests
+import openpyxl
+import pandas as pd
+import re
+
+kwd='박지후'
+news_num=10
+
+Jihoo_url="https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query="+kwd
+req=requests.get(Jihoo_url)
+
+soup=BeautifulSoup(req.content, 'html.parser')
+news=list(soup.find_all("a",{'class':'news_tit'}))
+news=news[:10]
+
+link=[]
+title=[]
+for i in news:
+    link.append(i.attrs['href'])
+    title.append(i.attrs['title'])
+
+news_dict={}
+for i in range(len(news)):
+    news_dict[i]={'title':title[i], 'url':link[i]}
+
+df=pd.DataFrame(news_dict).T
+df.to_excel('Jihoo.xlsx')
