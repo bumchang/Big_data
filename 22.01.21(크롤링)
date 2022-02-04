@@ -35,20 +35,30 @@ print("="*50)
 
 # 지식인에서 특정 단어 검색해서 나오는 내용 크롤링 
 
-news_num=10
-
-trend_url="https://search.naver.com/search.naver?where=kin&sm=tab_jum&query=%EC%B5%9C%EA%B7%BC%20%ED%8A%B8%EB%A0%8C%EB%93%9C"
-req=requests.get(trend_url)
-soup=BeautifulSoup(req.content, 'html.parser')
-
-jsin=list(soup.find_all("a",{'class':'api_txt_lines question_text'}))
-
+query2=input("네이버 지식인 검색어를 입력하세요:")
+knw_num=int(input("지식인 질문 몇 개를 가져올까요? 수를 입력하세요:"))
+knw_list=[]
 idx=0
-while idx < news_num:
-    for i in jsin[:news_num]:
-        print(str(idx)+'-----------------------')
-        print(i.get_text())
-        idx+=1
+
+knw_url="https://search.naver.com/search.naver?where=kin&sm=tab_jum&query={}"
+
+req2=requests.get(knw_url.format(query2))
+soup2=BeautifulSoup(req2.text,'html.parser')
+
+
+while idx < knw_num:
+    table2=soup2.find('ul',{'class':'lst_total _list'})
+    li_list2=table2.find_all("li",{'class':'bx _svp_item'})
+    area_list2 = [li.find("div",{'class':'question_group'}) for li in li_list2]
+    a_list= [area.find('a',{'class':'api_txt_lines question_text'}) for area in area_list2]
+
+    for n in a_list[ :knw_num]:
+         title=n.get_text()
+         knw_list.append(title)
+         idx+=1
+
+for i in knw_list:
+    print(i)
         
 print("="*50) 
 
